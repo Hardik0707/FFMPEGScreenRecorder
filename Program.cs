@@ -40,11 +40,10 @@ namespace FFMPEGScreenRecorder
                 {
                     Console.Write("Press Enter key to stop recording....\n");
                     response = Console.ReadKey(false).Key;   // true is intercept key (dont show), false is show
-
+                    if (ThreadException)
+                        throw new SystemException();
                     if (response == ConsoleKey.Enter)
                     {
-                        if (ThreadException)
-                            throw new SystemException();
                         stopFlag = true;
                         quitFlag = true;
                         Console.WriteLine("Screen Recording is saved.");
